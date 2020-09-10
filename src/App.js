@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Movie from "./Movie.js";
 import $ from "jquery";
-import view from "./view.js";
 
 class App extends Component {
   constructor(props) {
@@ -13,17 +12,17 @@ class App extends Component {
   }
 
   performSearch(searchTerm) {
-    console.log("Perform search using moviedb");
+    // console.log("Perform search using moviedb");
     const urlString =
       "http://www.omdbapi.com/?i=tt3896198&apikey=c18432a8&s=" + searchTerm;
     $.ajax({
       url: urlString,
       success: (searchResults) => {
-        console.log("Fetched data successfully");
-        console.log(searchResults);
+        // console.log("Fetched data successfully");
+        // console.log(searchResults);
 
         const results = searchResults.Search;
-        console.log(results);
+        // console.log(results);
 
         var movieRows = [];
         if (results) {
@@ -38,13 +37,13 @@ class App extends Component {
         this.setState({ rows: movieRows });
       },
       error: (xhr, status, err) => {
-        console.error("Failed to fetch data");
+        // console.error("Failed to fetch data");
       },
     });
   }
 
   searchChangeHandler(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     const boundObject = this;
     const searchTerm = event.target.value;
     this.performSearch(searchTerm);
